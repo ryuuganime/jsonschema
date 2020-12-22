@@ -71,7 +71,7 @@
                     ]
                 }
             },
-            "ryuuganime": {
+            "ryid": {
                 "description": "Valid show ID from Ryuuganime itself.",
                 "type": "number",
                 "exclusiveMinimum": 0
@@ -112,7 +112,7 @@
             "aniDb",
             "notifyMoe",
             "title",
-            "ryuuganime",
+            "ryid",
             "path"
         ],
         "uniqueItems": true,
