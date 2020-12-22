@@ -1169,7 +1169,10 @@
                                 },
                                 "seasonNumber": {
                                     "$ref": "#/definitions/seasonNumber"
-                                }
+                                },
+                                "specifiedEpisode": {
+                                    "$ref": "#/definitions/episodes"
+                                },
                             },
                             "required": [
                                 "showId",
