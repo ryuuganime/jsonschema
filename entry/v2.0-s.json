@@ -1172,7 +1172,7 @@
                                 },
                                 "specifiedEpisode": {
                                     "$ref": "#/definitions/episodes"
-                                },
+                                }
                             },
                             "required": [
                                 "showId",
