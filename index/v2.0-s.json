@@ -8,51 +8,19 @@
         "properties": {
             "myAnimeList": {
                 "description": "Valid show ID from MyAnimeList",
-                "oneOf": [
-                    {
-                        "type": "number",
-                        "exclusiveMinimum": 0
-                    },
-                    {
-                        "type": "null"
-                    }
-                ]
+                "$ref": "#/definitions/showId"
             },
             "kitsu": {
                 "description": "Valid show ID from Kitsu",
-                "oneOf": [
-                    {
-                        "type": "number",
-                        "exclusiveMinimum": 0
-                    },
-                    {
-                        "type": "null"
-                    }
-                ]
+                "$ref": "#/definitions/showId"
             },
             "aniList": {
                 "description": "Valid show ID from AniList",
-                "oneOf": [
-                    {
-                        "type": "number",
-                        "exclusiveMinimum": 0
-                    },
-                    {
-                        "type": "null"
-                    }
-                ]
+                "$ref": "#/definitions/showId"
             },
             "aniDb": {
                 "description": "Valid show ID from AniDB",
-                "oneOf": [
-                    {
-                        "type": "number",
-                        "exclusiveMinimum": 0
-                    },
-                    {
-                        "type": "null"
-                    }
-                ]
+                "$ref": "#/definitions/showId"
             },
             "notifyMoe": {
                 "description": "Valid show ID from Notify.moe, based on Base64 system",
@@ -73,11 +41,6 @@
                     "en_Latn",
                     "native"
                 ],
-                "additionalItems": {
-                    "propertyNames": {
-                        "pattern": "^[a-z]{2,3}_[\\w]{2,}$"
-                    }
-                },
                 "properties": {
                     "en_Latn": {
                         "description": "Mandatory value: a serial title in Romaji script.",
@@ -152,6 +115,19 @@
             "ryuuganime",
             "path"
         ],
-        "uniqueItems": true
+        "uniqueItems": true,
+        "definitions": {
+            "showId": {
+                  "oneOf": [
+                    {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
+            }
+        }
     }
 }
