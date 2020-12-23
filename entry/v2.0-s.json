@@ -1747,6 +1747,9 @@
                             "to": {
                                 "type": "integer",
                                 "minimum": 1
+                            },
+                            "only": {
+                                "$ref": "#/definitions/limitInteger"
                             }
                         },
                         "dependencies": {
@@ -1803,6 +1806,9 @@
                             "to": {
                                 "type": "integer",
                                 "minimum": 1
+                            },
+                            "only": {
+                                "$ref": "#/definitions/limitInteger"
                             }
                         },
                         "dependencies": {
@@ -1836,12 +1842,25 @@
                             "only": {
                                 "type": "integer",
                                 "minimum": 1
+                            },
+                            "to": {
+                                "$ref": "#/definitions/limitInteger"
+                            },
+                            "from": {
+                                "$ref": "#/definitions/limitInteger"
+                            },
+                            "not": {
+                                "$ref": "#/definitions/limitInteger"
                             }
                         },
                         "additionalProperties": false
                     }
                 }
             ]
+        },
+        "limitInteger": {
+            "exclusiveMaximum": 1,
+            "exclusiveMinimum": -1
         },
         "showId": {
             "type": "integer",
