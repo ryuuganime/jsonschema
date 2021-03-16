@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Ryuuganime JSON Schema for Anime Database, v2.0-s",
+  "title": "Ryuuganime JSON Schema for Anime Database, v2.1-s",
   "description": "Anime JSON Entry Validator in JSON Schema of Ryuuganime.\nPerformance issues or else may occurs on this Schema while it's on Beta version.",
   "type": "object",
   "properties": {
@@ -8,17 +8,17 @@
       "description": "Path to custom schema",
       "type": "string",
       "oneOf": [
-        { "pattern": "(\\.\\./)?\\.\\./schemas/entry\\.json" },
+        { "pattern": "(\\.\\./)?\\.\\./schemas/entry/v[\\d.]+-[srban]{1}(\\.min)?\\.json" },
         {
           "format": "uri",
-          "pattern": "https://raw\\.githubusercontent\\.com/ryuuganime/ryuuganime-db/master/schemas/entry\\.json"
+          "pattern": "https://raw\\.githubusercontent\\.com/ryuuganime/jsonschema/master/entry/v[\\d.]+-[srban]{1}(\\.min)?\\.json"
         },
         {
           "format": "uri",
-          "pattern": "https://schema\\.ryuuganime\\.my\\.id/entry/v[\\d.]+-[srban]{1}\\.json"
+          "pattern": "https://schema\\.ryuuganime\\.my\\.id/entry/v[\\d.]+-[srban]{1}(\\.min)?\\.json"
         }
       ],
-      "default": "https://raw.githubusercontent.com/ryuuganime/ryuuganime-db/master/schemas/entry.json"
+      "default": "https://schema.ryuuganime.my.id/entry/v2.1-s.json"
     },
     "version": {
       "description": "Detail of entry database model version used on file",
@@ -349,10 +349,7 @@
             },
             "id_ID": {
               "oneOf": [
-                {
-                  "$ref": "#/definitions/synopsis",
-                  "pattern": "^[\\w\\s\\S]+"
-                },
+                { "$ref": "#/definitions/synopsis", "pattern": "^[\\w\\s\\S]+" },
                 { "type": "null" }
               ]
             },
@@ -374,11 +371,7 @@
             },
             "de_DE": {
               "oneOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[\\w\\s\\SöäüÖÄÜß]+",
-                  "minLength": 20
-                },
+                { "type": "string", "pattern": "^[\\w\\s\\SöäüÖÄÜß]+", "minLength": 20 },
                 { "type": "null" }
               ]
             },
@@ -394,71 +387,43 @@
             },
             "fr_FR": {
               "oneOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[\\w\\s\\S«»À-Üà-øoù-ÿŒœ]+",
-                  "minLength": 20
-                },
+                { "type": "string", "pattern": "^[\\w\\s\\S«»À-Üà-øoù-ÿŒœ]+", "minLength": 20 },
                 { "type": "null" }
               ]
             },
             "pt_PT": {
               "oneOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[\\w\\s\\Sáâãàçéêíóôõú]+",
-                  "minLength": 20
-                },
+                { "type": "string", "pattern": "^[\\w\\s\\Sáâãàçéêíóôõú]+", "minLength": 20 },
                 { "type": "null" }
               ]
             },
             "ru_RU": {
               "oneOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[\\w\\s\\S\u0400-\u04FF]+",
-                  "minLength": 20
-                },
+                { "type": "string", "pattern": "^[\\w\\s\\S\u0400-\u04FF]+", "minLength": 20 },
                 { "type": "null" }
               ]
             },
             "es_ES": {
               "oneOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[\\w\\s\\SÀ-ÿ]+",
-                  "minLength": 20
-                },
+                { "type": "string", "pattern": "^[\\w\\s\\SÀ-ÿ]+", "minLength": 20 },
                 { "type": "null" }
               ]
             },
             "zh_Hans": {
               "oneOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[\\w\\s\\S\\p{Lo}{Han}]+",
-                  "minLength": 20
-                },
+                { "type": "string", "pattern": "^[\\w\\s\\S\\p{Lo}{Han}]+", "minLength": 20 },
                 { "type": "null" }
               ]
             },
             "zh_Hant": {
               "oneOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[\\w\\s\\S\\p{Lo}{Han}]+",
-                  "minLength": 20
-                },
+                { "type": "string", "pattern": "^[\\w\\s\\S\\p{Lo}{Han}]+", "minLength": 20 },
                 { "type": "null" }
               ]
             },
             "vi_VN": {
               "oneOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[\\w\\s\\S\\p{L}{VN}]+",
-                  "minLength": 20
-                },
+                { "type": "string", "pattern": "^[\\w\\s\\S\\p{L}{VN}]+", "minLength": 20 },
                 { "type": "null" }
               ]
             }
@@ -477,14 +442,13 @@
             "zh_Hant",
             "vi_VN"
           ],
-          "additionalProperties": {
-            "oneOf": [
-              {
-                "type": "string",
-                "minLength": 20
-              },
-              { "type": "null" }
-            ]
+          "patternProperties": {
+            "[a-z]{2}_[\\w]{2-4}": {
+              "oneOf": [
+                { "type": "string", "minLength": 20 },
+                { "type": "null" }
+              ]
+            }
           }
         },
         "isAnime": {
@@ -531,15 +495,7 @@
         "ageRating": {
           "description": "Content rating of the serial",
           "default": "PG13+",
-          "enum": [
-            "G0+",
-            "PS2+",
-            "PG7+",
-            "PG13+",
-            "R18+",
-            "GU21+",
-            null
-          ]
+          "enum": [ "G0+", "PS2+", "PG7+", "PG13+", "R18+", "GU21+", null ]
         },
         "isNsfw": {
           "description": "Mark the serial if not safe for work",
@@ -581,27 +537,16 @@
                   "id": {
                     "oneOf": [
                       { "type": "string" },
-                      {
-                        "type": "number"
-                      }
+                      { "type": "number" }
                     ]
                   },
                   "provider": {
                     "type": "string",
                     "default": "youtube",
-                    "enum": [
-                      "youtube",
-                      "dailymotion",
-                      "vimeo",
-                      "niconico",
-                      "bilibili"
-                    ]
+                    "enum": [ "youtube", "dailymotion", "vimeo", "niconico", "bilibili", "other" ]
                   }
                 },
-                "required": [
-                  "id",
-                  "provider"
-                ],
+                "required": [ "id", "provider" ],
                 "additionalProperties": false
               },
               "uniqueItems": true
@@ -611,16 +556,7 @@
               "description": "A list of soundtracks used on shows",
               "items": {
                 "type": "object",
-                "required": [
-                  "title",
-                  "mbid",
-                  "isrc",
-                  "bpm",
-                  "artists",
-                  "type",
-                  "episodes",
-                  "links"
-                ],
+                "required": [ "title", "mbid", "isrc", "bpm", "artists", "type", "episodes", "links" ],
                 "additionalProperties": false,
                 "properties": {
                   "title": {
