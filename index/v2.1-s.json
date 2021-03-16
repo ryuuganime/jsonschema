@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Ryuuganime JSON Schema for Anime Lists, v.2.0-s",
+  "title": "Ryuuganime JSON Schema for Anime Lists, v.2.1-s",
   "description": "Anime lists validator based on this schema file.",
   "type": "array",
   "items": {
@@ -115,19 +115,19 @@
       "ryid",
       "path"
     ],
-    "uniqueItems": true,
-    "definitions": {
-      "showId": {
-          "oneOf": [
-          {
-            "type": "number",
-            "exclusiveMinimum": 0
-          },
-          {
-            "type": "null"
-          }
-        ]
-      }
+    "uniqueItems": true
+  },
+  "definitions": {
+    "showId": {
+        "oneOf": [
+        {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   }
 }
