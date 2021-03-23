@@ -565,7 +565,13 @@
                   },
                   "mbid": {
                     "description": "Musicbrainz UUID of track (recording)",
-                    "$ref": "#/definitions/uuid"
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$"
+                      },
+                      { "type": "null" }
+                    ]
                   },
                   "isrc": {
                     "description": "International Standard Recording Code (ISRC) ID of recording/track",
@@ -599,14 +605,21 @@
                       "properties": {
                         "mbid": {
                           "description": "Musicbrainz UUID of artists/performers",
-                          "$ref": "#/definitions/uuid"
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$"
+                            },
+                            { "type": "null" }
+                          ]
                         },
                         "name": {
                           "type": "string",
                           "description": "Name of the performers/artists"
                         }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": [ "mbid", "name" ]
                     }
                   },
                   "type": {
