@@ -1,6 +1,13 @@
 # Ryuuganime JSON Schema
 _To read this `README` in English, click [this hyperlink](README.en_US.md)._
 
+## Akses
+Anda dapat mengakses repositori skema JSON Ryuuganime melalui beberapa cara:
+1. Menggunakan domain Ryuuganime```
+https://schema.ryuuganime.my.id/<path_skema>```
+2. Langsung menggunakan alamat GitHub Raw```
+https://raw.githubusercontent.com/ryuuganime/jsonschema/main/<path_skema>```
+
 ## FAQ
 ### Mengapa berkas Schema JSON perlu dipisah?
 Singkatnya, kami memerlukan schema JSON untuk selalu aktif dari *server end* pada saat repositori database sedang dalam masa perombakan.

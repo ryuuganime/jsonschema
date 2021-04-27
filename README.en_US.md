@@ -1,6 +1,13 @@
 # Ryuuganime JSON Schema
 _Untuk membaca berkas `README` ini dalam bahasa Indonesia, silakan ketuk [tautan hiper ini](README.en_US.md)._
 
+## Access
+You can access Ryuuganime JSON Schema repository through several ways:
+1. Using Ryuuganime domain```
+https://schema.ryuuganime.my.id/<schemaPath>```
+2. Directly using GitHub Raw```
+https://raw.githubusercontent.com/ryuuganime/jsonschema/main/<schemaPath>```
+
 ## FAQ
 ### Why do JSON Schema files need to be split from main (DB) repository?
 In short, we need the JSON schema to always be active from the server-end while the database repository is under maintenance.
